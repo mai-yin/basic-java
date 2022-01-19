@@ -1,0 +1,64 @@
+/*
+继承是重点；
+
+继承的本质是对某一批类的抽象，从而实现对现实世界更好的建模；
+extends的意思是"扩展"。子类是父类的扩展；
+
+java中类只有单继承，没有多继承；一个子类只能有一个父类，而一个父类可以有多个子类；
+
+继承是类和类之间的一种关系；
+继承关系的两个类，一个是子类(派生类),一个是父类(基类)；子类继承父类，使用关键字extends来表示。
+子类和父类之间，从意义上讲应该具有"子类 is a 父类"的关系
+*/
+
+
+
+/*
+在java中，所有的类都默认直接或者间接继承Object类；
+子类继承了父类就会有父类的全部方法和属性；
+对于父类中的public属性和方法子类可以继承，而对于父类中的private属性和方法，子类不能继承；
+在父类中，一般将属性私有，而方法公开；
+
+下列为例子
+*/
+
+//父类
+public class Person {
+
+    //public  可以继承
+    public int money = 10_0000_0000;
+    public void speak(){
+        System.out.println("说了一句话");
+    }
+
+    //private  不能继承
+    private int age;
+
+    //一般将属性私有，而方法公开
+
+}
+
+
+//子类
+//学生是人， extends 继承人的属性
+//子类继承了父类就会有父类的全部方法和属性
+public class Student extends Person{
+    //ctrl + h 可以看到继承树，即继承之间的关系
+
+}
+
+
+//子类
+public class Teacher extends Person{
+
+}
+
+
+public class Application {
+    public static void main(String[] args) {
+        com.yyy.demo04.Student s1 = new Student();
+        System.out.println(s1.money);
+        s1.speak();//子类继承了父类的方法
+
+    }
+}
