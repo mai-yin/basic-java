@@ -1,0 +1,59 @@
+/*
+封装：该露的露，该藏得藏；即将数据隐藏起来，避免程序直接对其进行访问，而应该通过接口来访问。
+
+    设计程序应该追求“高内聚，低耦合”。
+    高内聚就是指类的内部数据操作细节自己完成，不允许外部干涉；
+    低耦合指的是仅暴露少量的方法给外部使用。
+    
+    封装的好处：
+    1.提高程序的安全性，保护数据
+    2.隐藏代码的实现细节
+    3.统一接口
+    4.提高系统的可维护性
+*/
+
+/*
+  通过private可以将属性私有化，私有化后其他类就无法调用该属性；
+    如何使用这些私有化的属性？
+    通过提供一些public 的get、set方法从而来操作这些
+    
+  两种方法：
+    1.get 获得这个数据；
+    2.//set 给这个数据设置值；
+    
+    下面为例子
+*/
+
+public class Student {
+
+    //属性私有
+    private String name;    //姓名
+    private int id;   //学号
+    private char sex;   //性别
+    private int age;
+
+    //get 获得这个数据
+    public String getName() {
+        return this.name;
+    }
+
+    //set 给这个数据设置值
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    //alt + insert 会自动生成这些属性
+
+    public void setAge(int age) {
+        if (0<=age && age<=120){//合法
+        this.age = age;
+        }
+        else{//不合法
+            this.age = 3;
+        }
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+}
