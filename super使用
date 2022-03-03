@@ -11,5 +11,57 @@ super注意点：
      this： 没有继承也可以使用
      super： 只能在继承条件下才能使用
    构造方法
-      this() ;本类的构造
-      super() ;父类的构造
+     this() ;本类的构造
+     super() ;父类的构造
+
+子类在使用无参构造时会默认调用父类的无参构造，如果父类只有有参构造，则子类只能使用和父类相同的有参构造
+this表示调用子类的，super表示调用父类的
+
+
+
+//父类
+public class Person {
+
+    public  Person(String name){
+        System.out.println("Person无参构造执行了");
+    }
+
+    protected String name = "yyy";
+    public void print(){
+        System.out.println("Person");
+    }
+
+}
+
+
+
+//子类
+public class Student extends Person{
+
+    public Student(){
+        //隐藏代码；调用了父类的无参构造
+        super("name");  //调用父类的构造器必须要在子类构造器的第一行（默认调用）
+        System.out.println("Student无参构造执行了");
+    }
+
+
+    private String name = "ywt";
+
+    public  void test(String name){
+        System.out.println(name); //得到输入的参数name
+        System.out.println(this.name); //得到子类的name   ywt
+        System.out.println(super.name); //得到父类的name  yyy
+    }
+
+    public void test1(){
+        print(); //调用子类的print()  得到Student
+        this.print(); //调用子类的print()  得到Student
+        super.print();  //调用父类的print()   得到Person
+    }
+    
+    public void print(){
+        System.out.println("Student");
+    }
+
+}
+
