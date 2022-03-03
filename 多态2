@@ -1,0 +1,70 @@
+instanceof 可以判断两个类是否有联系，如果是则输出ture，如果不是则输出false
+  //System.out.println(x instanceof y);能不能编译通过，关键是看x和y的父子关系；
+  //即x指向的实际类型是不是y的子类型，如果是则输出true，不是则输出false
+
+
+关于父类与子类的转换关系如下：
+  //类型之间的转化； 基本类型转换 高低64 32 16 8 ，高的转低的需要强转，低的转高的则不需要
+        // 父（高）   子（低）
+        //高               低
+        Person s1 = new Student();  //低转高，不需要强制转换
+
+        //将s1这个对象转换为Student类型，我们就可以使用Student类型的方法了
+        Student s2 = (Student) s1;  //强转
+        ((Student)s1).go();        //强转
+
+
+        //子类转换为父类，可能丢失自己的本来的一些方法
+        Student s3 = new Student();
+        s3.go();
+        Person s4 = s3; //将子类转换为父类
+        
+总结：
+  多态存在的条件：父类引用指向子类的对象
+  
+    父子类转换时应注意：
+        1.把子类转换为父类，向上转型，不用强制转换
+        2.把父类转换为子类，向下转型，需要强转，并且可能会丢失一些方法
+        
+  多态的意义：
+        方便方法的调用，减少重复的代码，更简洁
+
+  抽象的思想：  封装、继承、多态    抽象类   接
+
+
+
+
+
+
+
+//instanceof的例子
+/*
+      //Object > Person > Student = Teacher ,String为无关类
+      
+       Object object = new Student();
+
+        //System.out.println(x instanceof y);能不能编译通过，关键是看x和y的父子关系
+        // 即x指向的实际类型是不是y的子类型，如果是则输出true，不是则输出false
+
+        System.out.println(object instanceof Student);  //true
+        System.out.println(object instanceof Person);   //true
+        System.out.println(object instanceof Object);   //true
+        System.out.println(object instanceof Teacher);  //false
+        System.out.println(object instanceof String);   //false
+        System.out.println("=======================");
+
+        Person person = new Student();
+        System.out.println(person instanceof Student);
+        System.out.println(person instanceof Object);
+        System.out.println(person instanceof Person);
+        System.out.println(person instanceof Teacher);
+        //System.out.println(person instanceof String);//编译报错
+        System.out.println("=======================");
+
+        Student student = new Student();
+        System.out.println(student instanceof Student);
+        System.out.println(student instanceof Object);
+        System.out.println(student instanceof Person);
+        //System.out.println(student instanceof Teacher);//编译报错
+        //System.out.println(student instanceof String); //编译报错
+ */
