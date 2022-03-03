@@ -1,0 +1,1 @@
+instanceof 可以判断两个类是否有父子关系，如果是则输出ture，如果不是则输出false
