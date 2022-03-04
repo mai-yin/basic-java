@@ -1,0 +1,94 @@
+静态变量：
+  1.被static修饰过的变量称为静态变量，未被修饰过的则称为非静态变量；
+  2.静态的变量对于这个类而言，在内存中只有一个，能被类中的所有实例所共享；
+  3.静态变量可以被没有实例化的对象调用。
+  
+静态方法：
+  1.被static关键字修饰过的方法为静态方法；
+  2.非静态的方法可以直接访问类中的静态方法，静态方法也可以调用类中的静态方法，但不能调用非静态方法。
+  
+代码块：使用{}括起来的代码集合称为代码块
+  代码块有很多种，特殊的代码块有：静态代码块，匿名代码块，构造方法等；
+    1.静态代码块是由static关键字修饰过的代码块表现为 static{}
+    2.匿名代码块没有任何修饰，表现为{}   通常可用来赋初值
+    3.当new一个新对象时，三者之间的执行顺序是：
+      静态代码块 > 匿名代码块 > 构造方法
+    4.静态代码块在第一次执行后就不会再次执行，只会执行一次
+  
+final关键字：当一个类被final修饰后就不能有其他类继承它
+
+静态导入包：在导入的包内的方法前面加static关键字从而使得包内的方法可以直接使用
+
+
+
+//静态变量，静态方法例子
+
+public class Student {
+
+    private static int age; //静态变量  多线程
+    private double score;  //非静态变量
+
+    //静态的变量对于这个类而言，在内存中只有一个，能被类中的所有实例所共享
+
+    public void run(){
+        go(); //非静态的方法可以直接访问类中的静态方法
+    }
+
+    public static void go(){
+        go(); //静态方法也可以调用类中的静态方法，但不能调用非静态方法
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        System.out.println(s1.age);
+        System.out.println(s1.score);
+
+        s1.run();
+
+        Student.go();
+        go();
+        System.out.println(Student.age);
+        //System.out.println(Student.score);
+    }
+}
+
+
+//代码块
+
+//当一个类被final修饰后就不能有其他类继承它
+public final class Person{
+    //2 ：   通常用来赋初始值
+    {
+        System.out.println("匿名代码块");
+        //代码块（匿名代码块）
+    }
+    //1 ：   只执行一次
+    static {
+        System.out.println("静态代码块");
+        //静态代码块
+    }
+    //3
+    public Person() {
+        System.out.println("构造方法");
+    }
+
+    public static void main(String[] args) {
+        Person p1 = new Person();
+        System.out.println("=========");
+        Person p2 = new Person();
+    }
+}
+
+
+//静态导入包
+
+import static java.lang.Math.random;
+import static java.lang.Math.PI;//静态导入包
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(random());
+        System.out.println(PI);
+
+    }
+}
