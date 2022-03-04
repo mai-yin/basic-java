@@ -1,0 +1,41 @@
+抽象类：
+  由abstract关键字修饰过的类即为抽象类； 抽象类是单继承
+
+抽象方法：
+  由abstract关键字修饰过的方法即为抽象方法； 抽象方法是一种约束，只有方法名字，没有方法的实现， 需要子类重写该抽象方法；
+  
+抽象类自己不能new出来，其实现需要通过他的子类
+  继承了抽象类的子类，都必须要实现该抽象类中的抽象方法，除非该子类也是抽象类；
+  
+抽象类的特点
+  1.不能new这个抽象类，只能靠子类去实现他，是一种约束
+  2.抽象类里面可以写普通方法，但是抽象方法只能出现在抽象类里；
+
+意义：提高开发效率
+
+
+//父类
+//abstract 抽象类 ；类 extends；  单继承    （但是接口可以实现多继承）
+public abstract class Action {
+
+    public Action(){
+        System.out.println("构造方法");
+    }
+
+    public void hello(){
+    }
+
+    //约束， 有人帮我们实现
+    //abstract  ，抽象方法，只有方法名字，没有方法的实现
+    public abstract void doSomething();
+
+}
+
+
+//继承了抽象类的子类，都必须要实现该抽象类中的抽象方法，除非该子类也是抽象类
+public class A extends Action{
+    @Override
+    public void doSomething() {
+        System.out.println("do");
+    }
+}
