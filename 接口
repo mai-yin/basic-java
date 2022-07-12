@@ -1,0 +1,79 @@
+普通类：只有具体实现
+抽象类：具体实现和规范（抽象方法）都有
+接口：只有规范（抽象方法），自己无法写方法，是专业的约束，可以实现约束和实现的分离。  在大型公司中通常有着面向接口编程
+
+接口的本质是契约，就像人间的法律一样，制定好后大家都得遵守。
+
+接口的作用有：
+    1.约束
+    2.定义一些方法，让不同的人实现   10 ———> 1
+    3.接口中的方法都是  public abstract
+    4.接口中的常量都是  public static final
+    5.接口不能被实例化 ， 因为接口中没有构造方法
+    6.可以通过 implements 方法实现多个接口
+    7.必须要重写接口中的方法
+    
+
+例：
+接口UserService
+
+//interface定义关键字，接口都需要有实现类
+public interface UserService {
+
+    //接口中定义的常量默认为  public static final
+    int AGE = 99;
+
+    //接口中的所有定义其实都是抽象的 public abstract
+    void run(String name);
+    void add(String name);
+    void delte(String name);
+    void update(String name);
+    void query(String name);
+}
+
+
+接口TimeService
+
+public interface TimeService {
+    void timer();
+}
+
+
+用于实现以上两个接口的类
+UserServiceImpl   （Impl是后缀意为实现接口）
+
+//类 通过implements实现接口
+//实现了接口的类，就需要重写接口中的方法
+
+//利用接口可以实现多继承
+public class UserServiceImpl implements UserService,TimeService{
+    @Override
+    public void run(String name) {
+
+    }
+
+    @Override
+    public void add(String name) {
+
+    }
+
+    @Override
+    public void delte(String name) {
+
+    }
+
+    @Override
+    public void update(String name) {
+
+    }
+
+    @Override
+    public void query(String name) {
+
+    }
+
+    @Override
+    public void timer() {
+
+    }
+}
