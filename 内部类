@@ -1,0 +1,82 @@
+内部类是在一个类的内部再定义的一个类，比如A类中定义一个B类，那么B类相对A类来说就称为内部类，A类对于B类来说就是外部类。
+
+内部类主要可分为：
+1.成员内部类
+2.静态内部类
+3.局部内部类
+4.匿名内部类
+
+
+//Inner即为成员内部类
+public class Outer {
+
+    private int id = 10;
+    public void out(){
+        System.out.println("这是外部类的方法");
+    }
+
+    public class Inner {
+        public void in() {
+            System.out.println("这是内部类方法");
+        }
+        
+        //可以获得外部类的私有属性和方法
+        public void getID() {
+            System.out.println(id);
+        }
+    }
+}
+
+//一下为内部类的调用，通过外部类实例化内部类
+public class Application {
+    public static void main(String[] args) {
+        Outer outer = new Outer();
+        //通过这个外部类来实例化内部类
+        Outer.Inner inner = outer.new Inner();
+        inner.in();
+        inner.getID();
+
+    }
+}
+
+
+
+//如果将局部内部类的前面变成 public static class ，则此时该类则为静态内部类
+//静态内部类只能调用其外部类的静态的方法和变量
+
+
+public class Outer {
+}
+
+class A{
+}
+//一个java类中可以有多个class类，但是只能有一个public class
+
+
+
+匿名内部类的例子
+
+public class Test {
+    public static void main(String[] args) {
+        //没有名字初始化类，不用将实例保存到变量中
+        new Aplle().eat();
+
+        UserService userService = new UserService() {
+            @Override
+            public void hello() {
+
+            }
+        };
+    }
+}
+
+class Aplle{
+    public void eat(){
+        System.out.println("1");
+    }
+}
+
+interface UserService{
+    void hello();
+}
+
