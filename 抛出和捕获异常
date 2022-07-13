@@ -1,0 +1,37 @@
+抛出异常
+捕获异常
+
+异常处理五个关键字：
+  try、catch、finally、throw、throws
+  
+捕获异常通过try catch finally   此处的快捷键为Ctrl+Alt+T 快捷打包
+
+    try {   //try监控区域
+            System.out.println(a/b);
+        } catch (Throwable e) { //catch(想要捕获的异常类型) 捕获异常
+            System.out.println("程序出现异常");
+        } finally { //处理善后工作
+            System.out.println("finally");
+        }
+        //finally 可以不要 ，一般用于善后关闭。
+        
+    catch可以多次捕获，假设要捕获多个异常，则捕获的异常类型需要从小到大，例如：
+    
+    
+    catch(Error c){
+            System.out.println("程序出现异常");
+        } catch (Throwable e) { //catch(想要捕获的异常类型) 捕获异常
+            System.out.println("程序出现异常");
+        }//先Error 后Throwable
+        
+        
+        catch (Exception e) {
+            throw new RuntimeException(e); //打印错误的栈信息
+        }
+        
+        Throw Throws 的用法是主动抛出异常
+        
+        try {    //try监控区域
+            if (b == 0) {//主动的抛出异常 throw   throws
+                throw new ArithmeticException(); //主动的抛出异常
+            }
