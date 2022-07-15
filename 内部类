@@ -23,10 +23,33 @@
         Inner inner = new Outer().new Inner();
         
      
-    
 
 2.静态内部类
+    不依赖外部类对象，可以直接创建或者通过类名访问，可声明静态成员
+    静态内部类，和外部类相同
+    
+    静态内部类如何调用外部类属性：
+            //1.先创建外部类的对象
+            Outer outer = new Outer();
+            //2.调用外部类对象的属性
+            System.out.println(outer.name);
+            System.out.println(outer.age);
+            
+    调用静态内部类的静态属性,通过类名来调用
+            System.out.println(Inner.count);
+            
+    创建静态内部类的方法：
+         //直接创建静态内部类对象
+        Outer.Inner inner = new Outer.Inner();
+        inner.show();
+        
+
 3.局部内部类
+    定义在外部类的方法中，作用范围和创建对象仅限于当前方法
+    局部内部类访问外部变量类当前方法中的局部变量时，因无法保障变量的生命周期与自身相同，因此变量必须修饰为final
+    局部内部类只能在当前的方法中使用
+   
+    
 4.匿名内部类
 
 
