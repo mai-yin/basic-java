@@ -1,0 +1,36 @@
+超类、基类，所有类的直接或间接父类，位于继承树的最顶层
+
+任何类，如果没有书写extends显示继承某个类，都默认直接继承Object类，否则为间接继承。
+
+Object可以再API中查看该类以及其方法
+
+Object类中所定义的方法，是所有对象都具备的方法
+
+Object类型可以存储任何对象。
+  作为参数，可以接受任何对象
+  作为返回值，可以返回任何对象
+  
+  
+Object中的方法：
+
+  getClass()方法：
+  public final Class<?> getClass()
+  使用例：
+        Student s1 = new Student("yyy",22);
+        Student s2 = new Student("hc",22);
+        //判断s1和s2是否是同一个类型
+        Class c1 = s1.getClass();
+        Class c2 = s2.getClass();
+        if (c1 == c2){
+            System.out.println("s1和s2属于同一个类型");
+        }
+        else {
+            System.out.println("不属于同一个类型");
+        }
+  
+  返回引用中存储的实际对象类型
+  应用：通常用于判断两个引用中实际存储对象类型是否一致
+  
+  
+    hashCode()方法:
+    
