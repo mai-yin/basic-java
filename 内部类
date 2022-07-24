@@ -51,6 +51,33 @@
    
     
 4.匿名内部类
+    没有类名的局部内部类
+    必须继承一个父类或者实现一个接口
+    匿名内部类实际上是定义类、实现类、创建对象的语法合并，只能创建一个该类的对象
+    
+    //局部内部类
+        class Fan implements Usb{
+            @Override
+            public void service() {
+                System.out.println("连接电脑成功，可以开始工作了。。。");
+            }
+        }
+
+        //使用局部内部类创建对象
+        Usb usb = new Fan();
+        usb.service();
+        
+使用匿名内部类对以上代码优化得到：
+    //使用匿名内部类优化(相当于创建了一个局部内部类)
+        Usb usb = new Usb() {
+            @Override
+            public void service() {
+                System.out.println("连接成功");
+            }
+        };
+        相当于在这个过程中已经创建了一个局部内部类
+    其优点在于：减少代码量
+      缺点在于：可读性较差
 
 
 //Inner即为成员内部类
