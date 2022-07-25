@@ -32,5 +32,67 @@ Object中的方法：
   应用：通常用于判断两个引用中实际存储对象类型是否一致
   
   
+  
     hashCode()方法:
+    public int hashCode()
     
+    //hashCode()方法
+    System.out.println(s1.hashCode());
+    System.out.println(s2.hashCode());
+    
+    作用：返回该对象的哈希码值
+    哈希值根据对象的地址或者字符串或者数字使用hash算法计算出来的int类型的数值
+    一般情况下相同对象返回相同的哈希码
+    
+    
+
+    toString()方法：
+    public String toString(){}
+    
+    //3.toString()方法
+    System.out.println(s1.toString());
+    System.out.println(s2.toString());
+    
+    作用：返回该对象的字符串表现形式
+    可以根据程序需求覆盖该方法，比如：展示对象各个属性值
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+    
+    
+    
+    equals()方法
+    public boolean equals(Object obj){}
+    
+    //4.equals(Object obj)方法，判断两个对象是否相等
+    System.out.println(s1.equals(s2));
+    System.out.println(s1.equals(s3));
+    
+    作用：默认实现为判断(this == obj),比较两个对象的地址是否相同
+    可以进行覆盖，比较两个对象的内容是否相同。
+        equals()方法覆盖步骤：
+        1.比较两个引用是否指向同一对象。
+        2.判断obj是否为null
+        3.判断两个引用指向的实际对象类型是否一致
+        4.强制类型转换
+        5.依次比较各个属性值是否相同
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                Student student = (Student) o;
+                return age == student.age && name.equals(student.name);
+            }
+
+
+
+    finalize()方法:
+    当对象被判定为垃圾对象时，由JVM自动调用此方法，用以标记垃圾对象，进入回收队列。
+    垃圾对象：没有有效引用指向此对象时，为垃圾对象。
+    垃圾回收：由GC销毁垃圾对象，释放存储空间。
+    自动回收机制：JVM的内存耗尽时，一次性回收所有垃圾对象。
+    手动回收机制：使用System.gc();通知JVM执行垃圾回收。
