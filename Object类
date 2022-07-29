@@ -1,0 +1,98 @@
+超类、基类，所有类的直接或间接父类，位于继承树的最顶层
+
+任何类，如果没有书写extends显示继承某个类，都默认直接继承Object类，否则为间接继承。
+
+Object可以再API中查看该类以及其方法
+
+Object类中所定义的方法，是所有对象都具备的方法
+
+Object类型可以存储任何对象。
+  作为参数，可以接受任何对象
+  作为返回值，可以返回任何对象
+  
+  
+Object中的方法：
+
+  getClass()方法：
+  public final Class<?> getClass()
+  使用例：
+        Student s1 = new Student("yyy",22);
+        Student s2 = new Student("hc",22);
+        //判断s1和s2是否是同一个类型
+        Class c1 = s1.getClass();
+        Class c2 = s2.getClass();
+        if (c1 == c2){
+            System.out.println("s1和s2属于同一个类型");
+        }
+        else {
+            System.out.println("不属于同一个类型");
+        }
+  
+  返回引用中存储的实际对象类型
+  应用：通常用于判断两个引用中实际存储对象类型是否一致
+  
+  
+  
+    hashCode()方法:
+    public int hashCode()
+    
+    //hashCode()方法
+    System.out.println(s1.hashCode());
+    System.out.println(s2.hashCode());
+    
+    作用：返回该对象的哈希码值
+    哈希值根据对象的地址或者字符串或者数字使用hash算法计算出来的int类型的数值
+    一般情况下相同对象返回相同的哈希码
+    
+    
+
+    toString()方法：
+    public String toString(){}
+    
+    //3.toString()方法
+    System.out.println(s1.toString());
+    System.out.println(s2.toString());
+    
+    作用：返回该对象的字符串表现形式
+    可以根据程序需求覆盖该方法，比如：展示对象各个属性值
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+    
+    
+    
+    equals()方法
+    public boolean equals(Object obj){}
+    
+    //4.equals(Object obj)方法，判断两个对象是否相等
+    System.out.println(s1.equals(s2));
+    System.out.println(s1.equals(s3));
+    
+    作用：默认实现为判断(this == obj),比较两个对象的地址是否相同
+    可以进行覆盖，比较两个对象的内容是否相同。
+        equals()方法覆盖步骤：
+        1.比较两个引用是否指向同一对象。
+        2.判断obj是否为null
+        3.判断两个引用指向的实际对象类型是否一致
+        4.强制类型转换
+        5.依次比较各个属性值是否相同
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                Student student = (Student) o;
+                return age == student.age && name.equals(student.name);
+            }
+
+
+
+    finalize()方法:
+    当对象被判定为垃圾对象时，由JVM自动调用此方法，用以标记垃圾对象，进入回收队列。
+    垃圾对象：没有有效引用指向此对象时，为垃圾对象。
+    垃圾回收：由GC销毁垃圾对象，释放存储空间。
+    自动回收机制：JVM的内存耗尽时，一次性回收所有垃圾对象。
+    手动回收机制：使用System.gc();通知JVM执行垃圾回收。
