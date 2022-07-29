@@ -1,0 +1,65 @@
+/*类与对象的关系，
+类是一种抽象的数据类型，它是对某一类实物的整体描述，定义，但是不能代表某一具体的事物；如动物，植物等；
+对象是抽象概念的具体实例，比如说张三就是人的一个具体的实例；
+
+什么是面向对象，面向对象编程(Object-Orinented Programming, OOP);
+面向对象编程的本质就是：以类的方式组织代码，以对象的组织(封装)数据；
+三大特征：封装、继承、多态；
+*/
+
+
+
+
+
+/*创建与初始化对象
+一个类里面只包含两种东西，即：属性和方法；  需要注意的是类的首字母应该大写。
+下面介绍例子:学生类*/
+
+public class Student {
+
+    //属性
+    String name; //没赋值之前的默认值是null
+    int age;    //没赋值之前的默认值是0
+
+    //方法
+    public void study(){
+        //this代表当前这个类
+        System.out.println(this.name+"在学习");
+    }
+
+}
+
+/*
+  对于一个项目应该只存在一个main方法；
+  创建的类是抽象的，如果要使用类则必须先把类实例化，创建出对应的对象；
+  
+  创建与初始化对象，
+  使用new关键字创建对象，使用new关键字创建对象时，除了分配内存空间之外，
+  还会给创建好的对象进行默认的初始化以及对类中构造器的调用；
+  创建方法为     类 对象名 = new 类();
+*/
+
+ public static void main(String[] args) {
+
+        //类，抽象的
+        //类实例化后会返回一个自己的对象！
+        //student对象就是一个Student类的具体实例！
+
+        /* 创建与初始化对象，
+        使用new关键字创建对象，使用new关键字创建对象时，除了分配内存空间之外，
+        还会给创建好的对象进行默认的初始化以及对类中构造器的调用
+
+         */
+        Student xiaoming = new Student();
+        Student yyy = new Student();
+
+        xiaoming.name = "小明";
+        xiaoming.age = 14;
+
+        System.out.println(xiaoming.name);
+        System.out.println(xiaoming.age);
+        System.out.println(yyy.name);
+        System.out.println(yyy.age);
+    }
+}
+
